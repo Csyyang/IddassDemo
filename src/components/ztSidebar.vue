@@ -31,7 +31,7 @@ const changeCollapse = () => {
           <el-icon>
             <location />
           </el-icon>
-          <span>Navigator One</span>
+          <span>主导航</span>
         </template>
         <el-menu-item-group>
           <template #title>
