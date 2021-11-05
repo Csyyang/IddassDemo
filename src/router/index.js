@@ -14,9 +14,20 @@ const route = [
         component: navigation,
         children: [
             {
-                path: '/',
+                path: '',
                 name: 'Index',
-                component: () => import('@/package/index/index.vue')
+                component: () => import('@/package/index/index.vue'),
+                meta: {
+                    title: '我的应用'
+                }
+            },
+            {
+                path: 'test',
+                name: 'Test',
+                component: () => import('@/package/test/test.vue'),
+                meta: {
+                    title: '测试页'
+                }
             }
         ]
     }

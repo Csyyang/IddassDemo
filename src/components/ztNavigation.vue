@@ -1,6 +1,10 @@
 <script setup>
+// import { computed } from 'vue-demi';
+// import { mapState } from 'vuex';
 import ztNav from '../components/ztNav.vue'
-import ztSidebar from '../components/ztSidebar.vue';
+import ztSidebar from '../components/ztSidebar.vue'
+import ztNavHeader from '../components/ztNavHeader.vue'
+
 </script>
 
 <template>
@@ -9,7 +13,8 @@ import ztSidebar from '../components/ztSidebar.vue';
         <section class="view">
             <ztSidebar />
             <section class="router">
-                <router-view></router-view>
+                <ztNavHeader />
+                <router-view class="main"></router-view>
             </section>
         </section>
     </section>
@@ -17,7 +22,7 @@ import ztSidebar from '../components/ztSidebar.vue';
 
 <style lang="scss" scoped>
 .view {
-    height: 100%;
+    height: calc(100% - 62px);
     display: flex;
     align-items: stretch;
 }
@@ -26,6 +31,11 @@ import ztSidebar from '../components/ztSidebar.vue';
 }
 .router {
     flex: 1 0 auto;
+}
+
+.main {
+    overflow: auto;
+    height: calc(100% - 65px);
 }
 </style>
 

@@ -21,33 +21,35 @@ const changeCollapse = () => {
         <expand />
       </el-icon>
     </div>
-    <el-menu default-active="1" :collapse="isCollapse">
-      <div :class="[isCollapse?'logot':'','logo']">
+    <el-menu router default-active="1" :collapse="isCollapse">
+      <div :class="[isCollapse ? 'logot' : '', 'logo']">
         <img src="../assets/logo.png" />
       </div>
 
-      <el-sub-menu index="1">
+      <el-sub-menu index="navigation">
         <template #title>
           <el-icon>
             <location />
           </el-icon>
           <span>主导航</span>
         </template>
-        <el-menu-item-group>
+        <el-menu-item index="/navigation/">
           <template #title>
-            <span>Group One</span>
+            <span>首页</span>
           </template>
-          <el-menu-item index="1-1">item one</el-menu-item>
-          <el-menu-item index="1-2">item two</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="Group Two">
-          <el-menu-item index="1-3">item three</el-menu-item>
-        </el-menu-item-group>
-        <el-sub-menu index="1-4">
+        </el-menu-item>
+
+        <el-menu-item index="/navigation/test">
+          <template #title>
+            <span>test</span>
+          </template>
+        </el-menu-item>
+
+        <el-sub-menu index="1-2">
           <template #title>
             <span>item four</span>
           </template>
-          <el-menu-item index="1-4-1">item one</el-menu-item>
+          <el-menu-item index="1-2-1">item one</el-menu-item>
         </el-sub-menu>
       </el-sub-menu>
 
@@ -88,14 +90,14 @@ const changeCollapse = () => {
   }
 }
 
-.logo img{
+.logo img {
   width: 200px;
   object-fit: cover;
-  transform: width .5s;
+  transform: width 0.5s;
   cursor: pointer;
 }
 
-.logot img{
+.logot img {
   width: 64px;
 }
 </style>

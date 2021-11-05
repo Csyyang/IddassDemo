@@ -12,6 +12,12 @@ export default defineConfig({
       "components": path.resolve(__dirname, "src/components")
     }
   },
+  server: {
+    '/hock': {
+      target: 'https://heenyeqwxq.login.aliyunidaas.com/',
+      rewrite: (path) => path.replace(/^\/hock/, '')
+    }
+  },
   plugins: [
     vue(),
     Components({
