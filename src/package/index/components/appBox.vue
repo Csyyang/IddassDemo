@@ -1,35 +1,39 @@
 <script setup>
+import { useStore } from 'vuex'
 
 const props = defineProps({
   appList: {
-    type: Array,
-    default: () => [{
-      type: 'web应用',
-      lists: [{
-        appName: '应用名称',
-        appImg: 'https://heenyeqwxq.login.aliyunidaas.com/public/app_image/plugin_saml_gitlab?logoUuid=',
-        linkHref: ''
-      }]
-    }]
+    type: Object,
+    default: () => {}
   }
 })
+const store = useStore()
+const access_token = store.state.access_token
+const routerLink = (url) => {
+  window.open(`${url}?access_token=${access_token}`)
+}
 </script>
 
 <template>
   <section id="index">
-    <section class="app-box" v-for="item in props.appList">
+    <section class="app-box" v-for="(item, key) in props.appList">
       <el-card>
         <template #header>
           <div>
-            <span>{{ item.type }}</span>
+            <span>{{ key }}</span>
           </div>
         </template>
-        <el-card v-for="item2 in item.lists" class="app-card">
-          <div class="app-content">
-            <img class="app-img" :src="item2.appImg" />
-            <p>{{ item2.appName }}</p>
-          </div>
-        </el-card>
+        <div class="card-box">
+          <el-card v-for="item2 in item" class="app-card" @click="routerLink(item2.startUrl)">
+            <div class="app-content">
+              <img
+                class="app-img"
+                :src="'https://heenyeqwxq.login.aliyunidaas.com/public/app_image/' + item2.idpApplicationId + '?logoUuid='"
+              />
+              <p>{{ item2.name }}</p>
+            </div>
+          </el-card>
+        </div>
       </el-card>
     </section>
   </section>
@@ -44,6 +48,8 @@ const props = defineProps({
   width: 169px;
   height: 147px;
   cursor: pointer;
+  margin-right: 30px;
+  margin-bottom: 30px;
 }
 .app-img {
   height: 60px;
@@ -57,5 +63,9 @@ const props = defineProps({
   align-items: center;
 }
 
+.card-box {
+  display: flex;
+  flex-wrap: wrap;
+}
 </style>
 

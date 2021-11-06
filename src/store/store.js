@@ -27,6 +27,11 @@ const mutations = {
     },
     setAccessToken(state, newVal) {
         state.access_token = newVal
+        sessionStorage.setItem('access_token', newVal)
+    },
+    logout(state) {
+        state.access_token = ''
+        sessionStorage.setItem('access_token', '')
     }
 }
 
@@ -43,11 +48,22 @@ const actions = {
             }
 
             const resLogin = await login(obj)
+
+            // 账号密码错误
+            if(resLogin.error === "invalid_grant") {
+                console.log('⽤户名或密码错误')
+                resolve(false)
+            }
+
+            // client_id或client_secret错误
+            if(resLogin.error === 'invalid_client') {
+                console.log('client_id或client_secret错误')
+            }
+
+
             const access_token = resLogin.access_token
             if (access_token) {
-                sessionStorage.setItem('access_token', access_token)
                 commit('setAccessToken', access_token)
-                console.log(getters.hasToken)
 
                 resolve(true)
             } else {
