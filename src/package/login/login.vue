@@ -1,10 +1,21 @@
 <script setup>
-import { reactive } from 'vue'
+import { reactive, toRaw } from 'vue'
+import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
 
 const user = reactive({
-  name: '',
-  password: ''
+  username: 'manager@idaas.com',
+  password: '@ESn0DFyq5c5y'
 })
+
+const router = useRouter()
+const store = useStore()
+const logins = async () => {
+  const result = await store.dispatch('login', toRaw(user))
+  if(result) {
+    router.replace('/navigation/')
+  }
+}
 
 </script>
 
@@ -19,7 +30,7 @@ const user = reactive({
 
       <el-form :model="user" label-width="60px">
         <el-form-item label="用户名">
-          <el-input v-model="user.name" type="text" placeholder="请输入用户名"></el-input>
+          <el-input v-model="user.username" type="text" placeholder="请输入用户名"></el-input>
         </el-form-item>
         <el-form-item label="密码">
           <el-input v-model="user.password" type="password" placeholder="请输入密码"></el-input>
@@ -27,7 +38,7 @@ const user = reactive({
       </el-form>
 
       <section class="primary-bt">
-        <el-button type="primary">登录</el-button>
+        <el-button type="primary" @click="logins">登录</el-button>
       </section>
     </section>
   </div>

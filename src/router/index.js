@@ -4,6 +4,10 @@ import navigation from '@/components/ztNavigation.vue'
 
 const route = [
     {
+        path: '/',
+        redirect: '/navigation/'
+    },
+    {
         path: '/login',
         name: 'Login',
         component: login

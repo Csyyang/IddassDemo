@@ -9,13 +9,20 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
-      "components": path.resolve(__dirname, "src/components")
+      "components": path.resolve(__dirname, "src/components"),
+      "api": path.resolve(__dirname, "src/api")
     }
   },
   server: {
-    '/hock': {
-      target: 'https://heenyeqwxq.login.aliyunidaas.com/',
-      rewrite: (path) => path.replace(/^\/hock/, '')
+    cors: true,
+    rejectUnauthorized:false,
+    proxy: {
+      '/hock': {
+        target: 'https://heenyeqwxq.login.aliyunidaas.com',
+        rewrite: (path) => path.replace(/^\/hock/, ''),
+        secure: false,
+        changeOrigin: true
+      }
     }
   },
   plugins: [

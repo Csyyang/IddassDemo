@@ -1,21 +1,21 @@
-import * as axios from '@/api/axios'
+import axios from '@/api/axios'
+import qs from 'qs'
 
-
-
-export function login({ username,password }) {
-   return axios({
-       method: 'post',
-       url: '/oauth/token',
-       headers: {
-           'Content-Type': 'application/x-www-form-urlencode'
-       },
-       data: {
-        client_id: 'idaas-cn-shenzhen-bum9ec83a0aplugin_oauth2',
-        client_secret: 'GZIi85FJT76Jx9Vk1o7oacLl1tWF6Y187GGWJFWJMZ',
-        grant_type: 'password',
-        scope: 'read',
-        username,
-        password
-       }
-   })
+/**
+ * 登录接口
+ * @param { object } user
+ * @param { string } user.username 用户名
+ * @param { string } user.password 密码
+ * @returns { Promise<object> } 
+ */
+export function login(user) {
+    return axios({
+        method: 'post',
+        url: '/oauth/token',
+        headers: {
+            'content-type': 'application/x-www-form-urlencoded'
+        },
+        data: qs.stringify(user)
+    })
 }
+
