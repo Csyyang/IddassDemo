@@ -1,6 +1,16 @@
 <script setup>
+import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
+
 const handleSelect = () => (key, keyPath) => {
   console.log(key, keyPath)
+}
+
+const store = useStore()
+const router = useRouter()
+const logout = () => {
+  store.dispatch('logout')
+  router.push('/login')
 }
 </script>
 
@@ -15,10 +25,18 @@ const handleSelect = () => (key, keyPath) => {
     </el-menu>
 
     <section class="avatat-box">
-      <el-avatar
-        class="avatar"
-        src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
-      ></el-avatar>
+      <el-dropdown>
+        <el-avatar
+          class="avatar"
+          src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+        ></el-avatar>
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item>个人信息</el-dropdown-item>
+            <el-dropdown-item @click="logout">退出登录</el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
     </section>
   </nav>
 </template>
