@@ -3,7 +3,7 @@ import store from '@/store/store'
 import router from '@/router/globalGuard'
 
 const instance = axios.create({
-    baseURL: '/hock',
+    baseURL: '/ztzh', // /hock  /ztzh
     timeout: '10000',
     headers: {}
 })
@@ -11,6 +11,11 @@ const instance = axios.create({
 
 instance.interceptors.request.use(function (config) {
     // Do something before request is sent
+    if (store.getters.hasToken) {
+        config.headers = {
+            'authorization': 'Bearer ' + store.state.access_token
+        }
+    }
     return config;
 }, function (error) {
     // Do something with request error
@@ -23,10 +28,10 @@ instance.interceptors.response.use(function (response) {
 
     // 401 未授权的访问
     // 403 无权访问
-    if(response.status === 200) {
+    if (response.status === 200) {
         return response.data
-    } 
-   
+    }
+
 
 
     return response;
@@ -34,14 +39,13 @@ instance.interceptors.response.use(function (response) {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
 
-    // if(error.response.status === 403) {
-    //     console.log('没有权限')
-    // }
-    // if(error.response.status === 401) { // 登录失效？？
-    //     debugger
-    //     store.commit('logout')
-    //     router.push('/login')
-    // }
+    if(error.response.status === 403) {
+        console.log('没有权限')
+    }
+    if(error.response.status === 401) { // 登录失效？？
+        store.commit('logout')
+        router.push('/login')
+    }
 
     return Promise.reject(error);
 });

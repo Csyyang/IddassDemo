@@ -45,27 +45,7 @@ const changeCollapse = () => {
           </template>
         </el-menu-item>
 
-        <el-sub-menu index="1-2">
-          <template #title>
-            <span>item four</span>
-          </template>
-          <el-menu-item index="1-2-1">item one</el-menu-item>
-        </el-sub-menu>
       </el-sub-menu>
-
-      <el-menu-item index="2">
-        <el-icon>
-          <icon-menu />
-        </el-icon>
-        <template #title>Navigator Two2</template>
-      </el-menu-item>
-
-      <el-menu-item index="3">
-        <el-icon>
-          <icon-menu />
-        </el-icon>
-        <template #title>Navigator Two3</template>
-      </el-menu-item>
     </el-menu>
   </section>
 </template>

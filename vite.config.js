@@ -22,6 +22,12 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/hock/, ''),
         secure: false,
         changeOrigin: true
+      },
+      '/ztzh': {
+        target: 'https://ztzh.idp4.idsmanager.com',
+        rewrite: (path) => path.replace(/^\/ztzh/, ''),
+        secure: false,
+        changeOrigin: true,
       }
     }
   },

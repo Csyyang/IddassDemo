@@ -32,6 +32,14 @@ const route = [
                 meta: {
                     title: '测试页'
                 }
+            },
+            {
+                path: 'message',
+                name: 'Message',
+                component: () => import('@/package/message/message.vue'),
+                meta: {
+                    title: '消息'
+                }
             }
         ]
     }

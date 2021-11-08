@@ -17,14 +17,14 @@ const routerLink = (url) => {
 <template>
   <section id="index">
     <section class="app-box" v-for="(item, key) in props.appList">
-      <el-card>
+      <el-card shadow="hover">
         <template #header>
           <div>
             <span>{{ key }}</span>
           </div>
         </template>
         <div class="card-box">
-          <el-card v-for="item2 in item" class="app-card" @click="routerLink(item2.startUrl)">
+          <el-card v-for="item2 in item" shadow="hover" class="app-card" @click="routerLink(item2.startUrl)">
             <div class="app-content">
               <img
                 class="app-img"
@@ -67,5 +67,6 @@ const routerLink = (url) => {
   display: flex;
   flex-wrap: wrap;
 }
+
 </style>
 

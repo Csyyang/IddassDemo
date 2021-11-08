@@ -18,10 +18,8 @@ const logout = () => {
   <nav id="nav">
     <div class="nav-title">IDaaS统一认证身份平台</div>
 
-    <el-menu class="nav-list" default-action="3" mode="horizontal" @select="handleSelect">
-      <el-menu-item index="1">Processing Center1</el-menu-item>
-      <el-menu-item index="2">Processing Center2</el-menu-item>
-      <el-menu-item index="3">Processing Center3</el-menu-item>
+    <el-menu router class="nav-list" default-action="3" mode="horizontal" @select="handleSelect">
+      <el-menu-item index="/navigation/message">消息</el-menu-item>
     </el-menu>
 
     <section class="avatat-box">

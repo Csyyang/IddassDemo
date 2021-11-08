@@ -7,8 +7,10 @@ const state = () => {
         showNav: true, // 控制顶部导航栏显示
         showSidebar: true, // 侧边栏显示
         access_token: sessionStorage.getItem('access_token') || '', //⽤户令牌
-        client_id: '1bef3e76afd371ec24bd19097dda027bLcEWh4DmsL9',
-        client_secret: 'GZIi85FJT76Jx9Vk1o7oacLl1tWF6Y187GGWJFWJMZ',
+        // client_id: '1bef3e76afd371ec24bd19097dda027bLcEWh4DmsL9',
+        // client_secret: 'GZIi85FJT76Jx9Vk1o7oacLl1tWF6Y187GGWJFWJMZ',
+        client_id: '4b3d8f5428092e5f73db84409ec893220HbwoFdaLS8',
+        client_secret: '6lLSuUZeRchEzHstEB6woqAGvHwow5uMhEtsHRwSfX',
     }
 }
 

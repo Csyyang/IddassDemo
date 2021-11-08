@@ -1,14 +1,11 @@
 <script setup>
 import appBox from './components/appBox.vue'
 import { appList } from '@/api/business/index'
-import { reactive, toRaw } from 'vue'
-import { useStore } from 'vuex'
+import { reactive } from 'vue'
 
 
-const store = useStore()
 const appLists = reactive({})
 
-const access_token = store.state.access_token
 const getAppList = async (access_token) => {
   const resApplist = await appList(access_token)
   resApplist.data.authorizationApplications.forEach(item => {
@@ -18,10 +15,8 @@ const getAppList = async (access_token) => {
 
     appLists[item.supportDeviceTypes].push(item)
   })
-
-console.log(toRaw(appLists))
 }
-getAppList(access_token)
+getAppList()
 </script>
 
 <template>

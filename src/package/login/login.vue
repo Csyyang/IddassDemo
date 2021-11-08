@@ -4,8 +4,10 @@ import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 
 const user = reactive({
-  username: 'manager@idaas.com',
-  password: '@ESn0DFyq5c5y'
+  // username: 'manager@idaas.com',
+  // password: '@ESn0DFyq5c5y',
+  username: 'admin',
+  password: 'xPo98#2ub&z'
 })
 
 const router = useRouter()
